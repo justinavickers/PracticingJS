@@ -30,8 +30,23 @@ for (let i = 0; i < scores.length; i++) {
   }
 }
 console.info(grades)
-// Which grade had the most students achieve it? Use an if statment,
-// and a currentGradeCount variable, in your for..in loop to see if the current
-// grade's value is higher than the last one.
-// Which grade had the fewest students achieve it?
 
+const keys = Object.keys(grades)
+let currentGradeCount = 0
+let currentLowestGradeCount = scores.length
+for (const i in keys) {
+  if (grades[keys[i]] > currentGradeCount) {
+    currentGradeCount = grades[keys[i]]
+  }
+  if (grades[keys[i]] < currentLowestGradeCount) {
+    currentLowestGradeCount = grades[keys[i]]
+  }
+}
+const hightestGrades = keys.filter((key) => {
+  return grades[key] === currentGradeCount
+})
+const lowestGrades = keys.filter((key) => {
+  return grades[key] === currentLowestGradeCount
+})
+console.log(hightestGrades)
+console.log(lowestGrades)
